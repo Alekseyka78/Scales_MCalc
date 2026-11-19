@@ -1,0 +1,165 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="format-detection" content="telephone=no"><title>Шкалы ASA и RASS</title><script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{
+  color-scheme:light;
+  --bg:#ffffff;--card:#f5f4f0;--card2:#e4e2da;--text:#1c1c1a;--text2:#5a5954;--muted:#8a8882;--border:#d9d7cf;
+  --accent:#2a78d6;--ok:#0b7a0b;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#1a1a19;--card:#262624;--card2:#3a3a37;--text:#f0efec;--text2:#c3c2b7;--muted:#898781;--border:#3a3a37;--accent:#3987e5;--ok:#5fcf5f;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#1a1a19;--card:#262624;--card2:#3a3a37;--text:#f0efec;--text2:#c3c2b7;--muted:#898781;--border:#3a3a37;--accent:#3987e5;--ok:#5fcf5f;color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.5}
+.wrap{max-width:780px;margin:0 auto;padding-block:24px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1{font-size:22px;font-weight:500;margin:0 0 4px;text-wrap:balance}
+.lead{font-size:14px;color:var(--text2);margin:0 0 18px}
+
+.menu{display:grid;grid-template-columns:1fr;gap:12px;margin:0 0 16px}
+.mi{display:flex;flex-direction:column;gap:6px;background:var(--card);border-radius:8px;padding:16px 18px;border-left:6px solid var(--c);color:inherit;text-decoration:none}
+.mi:hover{background:var(--card2)}
+.mi .t{font-size:17px;font-weight:500}
+.mi .d{font-size:13px;color:var(--text2);line-height:1.5;flex:1}
+.mi .go{font-size:13px;color:var(--accent);margin-top:4px}
+.back{display:inline-block;font-size:14px;color:var(--accent);text-decoration:none;margin:0 0 12px;padding:4px 0}
+.back:hover{text-decoration:underline}
+.back:focus-visible,.mi:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sub{font-size:13px;color:var(--text2);margin:16px 0 8px}
+.list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:0 0 12px}
+.it{display:flex;align-items:flex-start;gap:14px;width:100%;text-align:left;font:inherit;color:inherit;background:var(--card);border:0;border-left:6px solid var(--c);border-radius:8px;padding:14px 16px;cursor:pointer}
+.it:hover{background:var(--card2)}
+.it:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.it .n{flex:none;min-width:44px;font-family:Georgia,"Times New Roman",serif;font-size:30px;line-height:1.1;font-weight:500;color:var(--c)}
+.it .b{flex:1;min-width:0}
+.it .t{font-size:17px;font-weight:500}
+.it .d{font-size:13px;color:var(--text2);margin-top:2px}
+.it .m{display:none;font-size:13px;line-height:1.6;margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
+.it[aria-expanded=true]{background:var(--card2)}
+.it[aria-expanded=true] .m{display:block}
+.it .go{font-size:13px;color:var(--accent);margin-top:6px}
+.it[aria-expanded=true] .go{display:none}
+.note{font-size:11px;color:var(--muted);line-height:1.5;margin:12px 0 0}
+.sig{margin-top:32px;font-size:11px;line-height:1.5;color:var(--muted);opacity:.22;user-select:none}
+</style></head>
+<body>
+<main class="wrap">
+
+<section id="home" data-view data-title="Шкалы">
+  <h1>Шкалы</h1>
+  <p class="lead">Выберите шкалу.</p>
+  <div class="menu">
+    <a class="mi" href="#asa" style="--c:#2a78d6">
+      <span class="t">Шкала ASA</span>
+      <span class="d">Физический статус пациента перед анестезией: шесть классов с примерами состояний.</span>
+      <span class="go">Открыть →</span>
+    </a>
+    <a class="mi" href="#rass" style="--c:#7a5cc7">
+      <span class="t">Шкала RASS</span>
+      <span class="d">Шкала ажитации и седации Ричмонда: от +4 (агрессивный) до −5 (не просыпается).</span>
+      <span class="go">Открыть →</span>
+    </a>
+  </div>
+  <p class="note">Учебные справочники, не заменяют клинические решения.</p>
+  <div class="sig" aria-hidden="true">© @AlekseyKa78<br>© @Vysota_i_pulse</div>
+</section>
+
+<section id="asa" data-view data-title="Шкала ASA" hidden>
+  <a class="back" href="#">← Все шкалы</a>
+  <h1>Шкала ASA</h1>
+  <p class="lead">Физический статус пациента перед анестезией. Нажмите на класс, чтобы увидеть примеры.</p>
+  <div class="list" id="asa-list"></div>
+  <p class="note">Буква «E» (Emergency) добавляется к классу при экстренной операции, например III E. Учебный справочник, не заменяет клиническое решение.</p>
+  <div class="sig" aria-hidden="true">© @AlekseyKa78<br>© @Vysota_i_pulse</div>
+</section>
+
+<section id="rass" data-view data-title="Шкала RASS" hidden>
+  <a class="back" href="#">← Все шкалы</a>
+  <h1>Шкала RASS</h1>
+  <p class="lead">Шкала ажитации и седации Ричмонда. Нажмите на уровень, чтобы увидеть критерии.</p>
+  <div id="rass-list"></div>
+  <p class="note">Седацию обычно титруют до цели, заданной врачом; во многих протоколах это от 0 до −2. Учебный справочник, не заменяет клиническое решение.</p>
+  <div class="sig" aria-hidden="true">© @AlekseyKa78<br>© @Vysota_i_pulse</div>
+</section>
+
+</main>
+
+<script>
+var ASA=[
+ {n:"I",c:"var(--ok)",t:"Здоровый пациент",d:"Нет системных заболеваний",m:"Не курит, не употребляет алкоголь или употребляет минимально."},
+ {n:"II",c:"#6a9a1f",t:"Лёгкое системное заболевание",d:"Без функциональных ограничений",m:"Курение, умеренный алкоголь, беременность, ожирение (ИМТ 30–40), компенсированные диабет и гипертония, лёгкая патология лёгких."},
+ {n:"III",c:"#c9a000",t:"Тяжёлое системное заболевание",d:"С функциональными ограничениями",m:"Плохо контролируемые диабет или гипертония, ХОБЛ, морбидное ожирение (ИМТ ≥ 40), активный гепатит, зависимость от алкоголя, кардиостимулятор, диализ по расписанию, перенесённые более 3 месяцев назад ИМ, инсульт, стентирование."},
+ {n:"IV",c:"#e67e22",t:"Тяжёлое заболевание",d:"Постоянная угроза жизни",m:"ИМ, инсульт или стентирование менее 3 месяцев назад, текущая ишемия, тяжёлая клапанная патология, выраженное снижение фракции выброса, сепсис, ДВС, ОРДС, почечная недостаточность без регулярного диализа."},
+ {n:"V",c:"#d03b3b",t:"Умирающий пациент",d:"Не выживет без операции",m:"Разрыв аневризмы аорты, массивная травма, внутричерепное кровоизлияние с масс-эффектом, ишемия кишечника при тяжёлой кардиопатологии, полиорганная недостаточность."},
+ {n:"VI",c:"#6b7480",t:"Смерть мозга",d:"Органы изымаются для донорства",m:"Констатирована смерть головного мозга."}
+];
+var RASS=[
+ {z:"Возбуждение",n:"+4",c:"#a8281c",t:"Агрессивный",d:"Опасен для персонала",m:"Открыто воинственный, насильственное поведение."},
+ {n:"+3",c:"#d03b3b",t:"Очень возбуждён",d:"Удаляет трубки и катетеры",m:"Тянет или удаляет трубки и катетеры, агрессивен."},
+ {n:"+2",c:"#e67e22",t:"Возбуждён",d:"Нецеленаправленные движения",m:"Частые нецеленаправленные движения, борьба с аппаратом ИВЛ."},
+ {n:"+1",c:"#c9a000",t:"Беспокоен",d:"Тревожен, но не агрессивен",m:"Тревожен, движения не энергичные и не агрессивные."},
+ {z:"Норма",n:"0",c:"var(--ok)",t:"Спокоен и внимателен",d:"Целевое состояние без седации",m:"Бодрствует, контактен, спокоен."},
+ {z:"Седация",n:"−1",c:"#6f93e0",t:"Сонлив",d:"Просыпается на голос",m:"Не полностью внимателен, но на голос открывает глаза и держит зрительный контакт более 10 секунд."},
+ {n:"−2",c:"#6f93e0",t:"Лёгкая седация",d:"Короткий контакт на голос",m:"На голос открывает глаза и держит зрительный контакт менее 10 секунд."},
+ {n:"−3",c:"#3b6fd6",t:"Умеренная седация",d:"Движение на голос, без контакта",m:"На голос двигается или открывает глаза, но зрительного контакта нет."},
+ {n:"−4",c:"#3b6fd6",t:"Глубокая седация",d:"Реакция только на физический стимул",m:"На голос не реагирует, на физический стимул двигается или открывает глаза."},
+ {n:"−5",c:"#3b6fd6",t:"Не просыпается",d:"Нет реакции на голос и стимул",m:"Нет реакции ни на голос, ни на физический стимул."}
+];
+function item(x){
+  return '<button type="button" class="it" aria-expanded="false" style="--c:'+x.c+'"><span class="n">'+x.n+'</span><span class="b"><div class="t">'+x.t+'</div><div class="d">'+x.d+'</div><div class="m">'+x.m+'</div><div class="go">Показать →</div></span></button>';
+}
+function bind(box){
+  box.addEventListener("click",function(e){
+    var r=e.target.closest(".it");if(!r||!box.contains(r))return;
+    var open=r.getAttribute("aria-expanded")==="true";
+    box.querySelectorAll(".it").forEach(function(b){b.setAttribute("aria-expanded","false")});
+    r.setAttribute("aria-expanded",open?"false":"true");
+  });
+}
+(function(){
+  var a=document.getElementById("asa-list");
+  a.innerHTML=ASA.map(item).join("");bind(a);
+  var r=document.getElementById("rass-list"),html="",open=false;
+  RASS.forEach(function(x){
+    if(x.z){if(open)html+='</div>';html+='<div class="sub">'+x.z+'</div><div class="list">';open=true}
+    html+=item(x);
+  });
+  if(open)html+='</div>';
+  r.innerHTML=html;bind(r);
+})();
+(function(){
+  var views=document.querySelectorAll('[data-view]');
+  function route(){
+    var id=location.hash.slice(1),found=null;
+    views.forEach(function(v){if(v.id===id&&id!=='home')found=v});
+    if(!found)found=document.getElementById('home');
+    views.forEach(function(v){v.hidden=(v!==found)});
+    document.title=found.getAttribute('data-title');
+    window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange',route);
+  route();
+})();
+
+/* Telegram Mini App: тема, как в калькуляторах */
+(function(){
+  var tg=window.Telegram&&window.Telegram.WebApp;
+  if(!tg)return;
+  try{
+    tg.ready();tg.expand();
+    function theme(){document.documentElement.setAttribute("data-theme",tg.colorScheme==="dark"?"dark":"light")}
+    theme();
+    if(tg.onEvent)tg.onEvent("themeChanged",theme);
+    var bb=tg.BackButton;
+    if(bb){
+      var sync=function(){var id=location.hash.slice(1);if(id&&id!=="home")bb.show();else bb.hide()};
+      bb.onClick(function(){location.hash=""});
+      window.addEventListener("hashchange",sync);
+      sync();
+    }
+  }catch(e){}
+})();
+</script>
+</body></html>
